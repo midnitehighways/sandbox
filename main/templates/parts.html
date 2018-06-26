@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+	{% if parts %}
+		<h3> Parts </h3>
+		{% for part in parts %}
+		<p><strong>ID:</strong> {{ part.pk }}</p>
+		<p><strong>Name:</strong> {{ part.name }}</p>
+		<p><strong>Content:</strong> {{ part.content }}</p>
+		<p><strong>Date:</strong> {{ part.pub_date }}</p>
+		<form action="{% url 'delete_part' part.pk %}" method="post">
+		    {% csrf_token %}
+		    <input type="submit" value="Delete" />
+		</form>
+
+		<!-- <a href="{% url 'delete_part' part.pk %}"> Delete part </a>  -->
+		<a href="{% url 'edit_part' %}"> Edit part </a>
+		{% endfor %} 
+	{% else %}
+		No parts available.
+	{% endif %}
+	<a href="{% url 'add_part' %}"> Add new part </a>
+
+
+	<a href="{% url 'index'%}"> Get back to index </a>
+{% endblock %}

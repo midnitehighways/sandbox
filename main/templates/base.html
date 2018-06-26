@@ -1,0 +1,22 @@
+{% load staticfiles %}
+
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<title>Sandbox</title>
+</head>
+<body>
+	<div class='container-main'>
+		<ul class='menu'>
+			<li><a href="{% url 'index' %}">Sandbox</a></li>
+	  		<li><a href="{% url 'parts' %}">Parts</a></li>
+	  		<li style="float:right"><a class="active" href="#sandbox">Tests</a></li>		
+		</ul>
+		{% block content %}
+		{% endblock %}
+	</div>
+	<div id='experiment'></div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
